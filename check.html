@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jump</title>
+
+</head>
+<body>
+
+<form>
+  <input type="checkbox" id="check" name="check" value="Check All" onclick="if(this.checked){checkFunction(true)}else{checkFunction(false)}">
+  <label id = "label" for="check">Check All</label><br><br><br>
+  <input type="checkbox" id="first" name="first" value="first">
+  <label for="first">first</label><br>
+  <input type="checkbox" id="second" name="second" value="second">
+  <label for="second"> second</label><br>
+  <input type="checkbox" id="third" name="third" value="third">
+  <label for="third"> third</label><br>
+  <input type="checkbox" id="fourth" name="fourth" value="fourth">
+  <label for="fourth"> fourth</label><br>
+</form> 
+
+
+<script>
+function checkFunction(bool) {
+  document.getElementById("first").checked = bool;
+  document.getElementById("second").checked = bool;
+  document.getElementById("third").checked = bool;
+  document.getElementById("fourth").checked = bool;
+  if(bool)
+    document.getElementById("label").innerHTML = "Uncheck All";
+  else
+    document.getElementById("label").innerHTML = "Check All";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Slideshow CSS -->
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+
+      body {
+        font-size: 62.5%;
+        text-align: center;
+      }
+
+      img {
+        width: 80%;
+      }
+  </style>
+  </head>
+  <body>
+    <br>
+    <br>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <br>
+    <br>
+    <div class="gallery">
+      <img src="images/columbia.jpg">
+    </div>
+ 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Slideshow Js -->
+    <script>
+      $( "#start" ).click(function(){
+        stop = false;
+        var galleryImage = $('.gallery').find('img').first();
+        var images = [
+        'images/columbia.jpg',
+        'images/maine.jpg',
+        'images/santaMonica.jpg',
+        'images/ucla.jpg',
+        'images/fenway.jpg',
+        ];
+
+        var i = 0;
+        setInterval(function() {
+          i = (i + 1) % images.length;
+          if (!stop) galleryImage.fadeOut(1000, function(){
+            $(this).attr('src', images[i]);
+            $(this).fadeIn(1000);
+          })
+        });
+      })
+      $( "#stop" ).click(function(){
+        stop = true;
+      })
+    </script>
+  </body>
+</html>

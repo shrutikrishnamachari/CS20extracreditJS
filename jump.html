@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jump</title>
+
+</head>
+<body>
+
+<form>
+  <input type="text" id="input1" name="input1" value="abc">
+  <input type ="button" value="JUMP >" id="btnLeft" name="btnLeft" onclick="jumpLeft()">
+  <input type ="button" value="< JUMP" id="btnRight" name="btnRight" onclick="jumpRight()" style="display: none;">
+  <input type="text" id="input2" name="input2" value=" ">
+</form> 
+
+
+<script>
+function jumpLeft() {
+  document.getElementById('input2').value = document.getElementById('input1').value;
+  document.getElementById('input1').value = " ";
+  document.getElementById("btnLeft").style.display = "none";
+  document.getElementById("btnRight").style.display = "initial";
+}
+
+function jumpRight() {
+  document.getElementById('input1').value = document.getElementById('input2').value;
+  document.getElementById('input2').value = " ";
+  document.getElementById("btnRight").style.display = "none";
+  document.getElementById("btnLeft").style.display = "initial";
+}
+</script>
+
+</body>
+</html>

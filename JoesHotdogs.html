@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+  Text-align:center;
+  Font-family: Arial;
+  Font-size: 20px;
+}
+h2, h3 {
+  Font-size: 20px;
+  font-weight: normal;
+}
+h1 {
+  Text-align:center;
+}
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joes Hotdogs</title>
+
+</head>
+<body>
+<h1>Order Form</h1
+<form>
+  <select name="Hotdog" id="hotdog">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select>
+  <label for="Hotdog">Hotdogs - $3.75 </label>
+  <br><br>
+  
+  <select name="Fries" id="fries">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select>
+  <label for="Fries">French Fries - $2.00 </label>
+  <br><br>
+
+  <select name="Drink" id="drink">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select>
+  <label for="Drink">Drinks - $1.80 </label>
+  <br><br>
+
+  <input type ="button" value="Order Now"  name="btn1" onclick="calculate()"><br>
+</form> 
+
+
+<div id="receipt">
+</div>
+
+<script>
+function calculate() {
+numHotdogs = document.getElementById("hotdog").value;
+numFries = document.getElementById("fries").value;
+numDrink = document.getElementById("drink").value;
+
+var subtotal, disctotal, discount, total, tax;
+var DISCOUNT_PERCENT=0.10, MASS_TAX = 0.0625;
+var costHotdogs = 3.75, costFries = 2, costDrink = 1.80;
+
+subtotal = numDrink*costDrink + numFries*costFries + numHotdogs*costHotdogs;
+
+disctotal = subtotal;
+if(subtotal >=20)
+	disctotal = subtotal * (1-DISCOUNT_PERCENT);
+ 
+total = disctotal * (1+MASS_TAX);
+
+subtotal = Math.round(subtotal*100)/ 100; 
+discount = Math.round((subtotal-disctotal)*100)/100; 
+tax = Math.round((total-disctotal)*100)/100; 
+total = Math.round(total*100)/100; 
+
+document.getElementById("receipt").innerHTML = "<h1>Receipt</h1><h2> Hotdog (" + numHotdogs + ") - $"+(numHotdogs*costHotdogs)+"</h3><h2> Fries (" + numFries + ") - $"+(numFries*costFries)+"</h2><h2> Drinks (" + numDrink + ") -  $"+(numDrink*costDrink)+"</h2><h2>Subtotal -  $"+subtotal+"</h2><h2>Discount -  $"+discount+"</h2><h2>Tax -  $"+tax+"</h2><h2>Total -  $"+total+"</h2>";
+
+}
+
+</script>
+
+</body>
+</html>
